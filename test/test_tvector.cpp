@@ -129,10 +129,11 @@ TEST(TVector, vectors_with_different_size_are_not_equal)
 
 TEST(TVector, can_add_scalar_to_vector)
 {
-	TVector<int>a(5),b(5);
+	TVector<int>a(5,1),b(5,1);
 	b = a + 10;
-	for (int i = 0; i < a.GetSize(); ++i)
+	for (int i = a.GetStartIndex(); i < a.GetSize() + a.GetStartIndex(); ++i)
 		a[i] += 10;
+	cout << a << " " << b << endl;
 	EXPECT_EQ(a, b);
 }
 
